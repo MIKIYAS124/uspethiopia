@@ -1,0 +1,473 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 348 83% 47%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 348 83% 47%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 348 83% 47%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 348 83% 47%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom colors - Softer palette */
+.bg-navy {
+  background-color: #1e293b; /* Softer navy */
+}
+
+.bg-navy-dark {
+  background-color: #0f172a; /* Darker navy for contrast */
+}
+
+.bg-navy-light {
+  background-color: #334155; /* Lighter navy for accents */
+}
+
+.bg-usp-red {
+  background-color: #e11d48; /* Softer red */
+}
+
+.text-usp-red {
+  color: #e11d48;
+}
+
+.hover\:bg-usp-red-dark:hover {
+  background-color: #be123c; /* Darker red for hover states */
+}
+
+.border-usp-red {
+  border-color: #e11d48;
+}
+
+.bg-usp-red-light {
+  background-color: #fecdd3; /* Very light red for subtle backgrounds */
+}
+
+.text-usp-red-dark {
+  color: #be123c;
+}
+
+/* Custom animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Gradient animations */
+.gradient-animation {
+  background-size: 200% 200%;
+  animation: gradient 15s ease infinite;
+  background-image: linear-gradient(-45deg, #1e293b 0%, #334155 25%, #0f172a 50%, #334155 75%, #1e293b 100%);
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e11d48;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #be123c;
+}
+
+/* Testimonial card styles */
+.testimonial-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.testimonial-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #e11d48;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+}
+
+.testimonial-card:hover::before {
+  transform: scaleX(1);
+}
+
+.testimonial-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #fecdd3;
+  color: #be123c;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+/* 3D button effect */
+.btn-3d {
+  position: relative;
+  transition: all 0.2s ease;
+  box-shadow: 0 6px 0 #be123c;
+}
+
+.btn-3d:hover {
+  transform: translateY(2px);
+  box-shadow: 0 4px 0 #be123c;
+}
+
+.btn-3d:active {
+  transform: translateY(6px);
+  box-shadow: 0 0 0 #be123c;
+}
+
+/* Map container */
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Location card styles */
+.location-card {
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+}
+
+.location-card:hover {
+  border-left-color: #e11d48;
+  transform: translateX(5px);
+}
+
+.location-card.active {
+  border-left-color: #e11d48;
+  background-color: #fef2f2;
+}
+
+/* Glass effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Animated underline */
+.animated-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.animated-underline::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #e11d48;
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+.animated-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Icon pulse animation */
+@keyframes icon-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-icon-pulse {
+  animation: icon-pulse 2s infinite;
+}
+
+/* Custom animations for shake effect */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+.animate-shake {
+  animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+/* Locations page styles */
+.locations-sidebar {
+  height: calc(100vh - 200px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.locations-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.locations-sidebar::-webkit-scrollbar-thumb {
+  background-color: #e11d48;
+  border-radius: 3px;
+}
+
+.locations-sidebar::-webkit-scrollbar-track {
+  background-color: #f3f4f6;
+}
+
+/* Feature icon container */
+.feature-icon-container {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #fecdd3;
+  margin: 0 auto 1.5rem auto;
+  position: relative;
+  z-index: 1;
+}
+
+.feature-icon-container::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #e11d48, #fb7185);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.feature-icon-container:hover::before {
+  opacity: 1;
+}
+
+.feature-icon {
+  color: #e11d48;
+  width: 32px;
+  height: 32px;
+  transition: transform 0.3s ease;
+}
+
+.feature-icon-container:hover .feature-icon {
+  transform: scale(1.1);
+  color: #9f1239;
+}
+
+/* Step cards */
+.step-card {
+  position: relative;
+  z-index: 1;
+}
+
+.step-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #e11d48;
+  z-index: -1;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.3s ease;
+  opacity: 0.05;
+}
+
+.step-card:hover::before {
+  transform: scaleY(1);
+}
+
+/* Fancy divider */
+.fancy-divider {
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #e11d48, transparent);
+  margin: 2rem auto;
+  width: 50%;
+}
+
+/* Animated counter */
+.counter-wrapper {
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.counter-wrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.counter-wrapper::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #e11d48, #fb7185);
+}
+
+/* Parking spot marker animation */
+@keyframes marker-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.marker-bounce {
+  animation: marker-bounce 1s infinite;
+}
